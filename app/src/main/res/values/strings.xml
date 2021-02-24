@@ -6,4 +6,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_a_car">Ajouter une voiture</string>
+    <string name="car_image">Car image</string>
+    <string name="enter_the_content_here">Rentrer la marque</string>
+    <string name="type_your_car_content">Marque du véhicule :</string>
 </resources>

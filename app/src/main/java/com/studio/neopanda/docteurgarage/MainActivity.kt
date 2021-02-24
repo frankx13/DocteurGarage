@@ -10,11 +10,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         // set the Toolbar as ActionBar
         setSupportActionBar(toolbar)
 
-        //  set the listener to the BottomNavigationView and pass the listener item to it.
+        // set the listener to the BottomNavigationView and pass the listener item to it.
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         if (savedInstanceState == null) {
