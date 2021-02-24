@@ -22,6 +22,7 @@ import android.content.Context.MODE_PRIVATE
 class CarsFragment : Fragment() {
 
     private val REQUEST_IMAGE_CAPTURE = 1
+    private lateinit var carOne: Car
 
     private var carBrand = ""
     private var carModel = ""
@@ -56,9 +57,21 @@ class CarsFragment : Fragment() {
     private fun initCars() {
         val car = activity!!.getSharedPreferences("my_car", MODE_PRIVATE)
         val carOneExistBrand = car.getBoolean("car_one_exists", false)
-        if (!carOneExistBrand){
-
+        if (carOneExistBrand){
+            loadCarOne(car)
+            car_one_tv.text = carOne.brand + "" + carOne.model
+            car_one_tv.visibility = View.VISIBLE
         }
+    }
+
+    private fun loadCarOne(car: SharedPreferences) {
+        carOne = Car("", "", "", 0, "", "")
+        carOne.brand = car.getString("car_brand", "None").toString()
+        carOne.model = car.getString("car_model", "None").toString()
+        carOne.year = car.getString("car_year", "None").toString()
+        carOne.kilometers = car.getInt("car_kilometers", 0).toString().toInt()
+        carOne.lastTC = car.getString("car_last_tc", "None").toString()
+        carOne.lastEmptying = car.getString("car_last_emptying", "None").toString()
     }
 
     private fun addCar() {

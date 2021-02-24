@@ -10,4 +10,5 @@
     <string name="car_image">Car image</string>
     <string name="enter_the_content_here">Rentrer la marque</string>
     <string name="type_your_car_content">Marque du véhicule :</string>
+    <string name="car_one">Car One</string>
 </resources>

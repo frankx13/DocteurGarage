@@ -23,6 +23,18 @@
         android:text="@string/add_a_car"/>
 
     <TextView
+        android:id="@+id/car_one_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/car_one"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:textColor="@color/colorSecondaryDark"
+        android:layout_below="@id/add_car_btn"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
         android:id="@+id/add_car_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
