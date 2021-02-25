@@ -58,6 +58,28 @@ class CarsFragment : Fragment() {
             }
         }
 
+        if (carOneIsCreated) {
+            car_one_tv.setOnClickListener {
+                car_one_tv.setTextColor(resources.getColor(R.color.colorItemFocus))
+                car_two_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
+                car_three_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
+            }
+        }
+        if (carTwoIsCreated) {
+            car_two_tv.setOnClickListener {
+                car_one_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
+                car_two_tv.setTextColor(resources.getColor(R.color.colorItemFocus))
+                car_three_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
+            }
+        }
+        if (carThreeIsCreated) {
+            car_three_tv.setOnClickListener {
+                car_one_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
+                car_two_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
+                car_three_tv.setTextColor(resources.getColor(R.color.colorItemFocus))
+            }
+        }
+
 //        dispatchTakePictureIntent()
     }
 
