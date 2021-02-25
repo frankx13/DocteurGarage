@@ -4,9 +4,9 @@
 android:id="@+id/navigation_cars"
     android:icon="@drawable/ic_directions_car_black_24dp"
     android:title="@string/vehicles"/><item
-android:id="@+id/navigation_reminders"
+android:id="@+id/navigation_guides"
     android:icon="@drawable/ic_event_note_black_24dp"
-    android:title="@string/reminders"/><item
+    android:title="@string/guides"/><item
 android:id="@+id/navigation_contacts"
     android:icon="@drawable/ic_contacts_black_24dp"
     android:title="@string/contacts"/>

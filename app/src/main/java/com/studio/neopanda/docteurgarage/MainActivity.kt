@@ -35,8 +35,8 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.navigation_reminders -> {
-                    val fragment = RemindersFragment()
+                R.id.navigation_guides -> {
+                    val fragment = GuidesFragment()
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.container, fragment, fragment.javaClass.simpleName)
                         .commit()
