@@ -22,17 +22,83 @@
         android:textColor="@color/colorSecondaryText"
         android:text="@string/add_a_car"/>
 
+<!--            Car One           -->
     <TextView
         android:id="@+id/car_one_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/car_one"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="gone"
+        android:layout_marginTop="15dp"
         android:textColor="@color/colorSecondaryDark"
         android:layout_below="@id/add_car_btn"
         android:layout_centerHorizontal="true"/>
+
+    <ImageButton
+        android:id="@+id/delete_car_one_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete_red_24dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        android:layout_below="@id/add_car_btn"
+        android:layout_toEndOf="@id/car_one_tv"
+        android:background="@null"/>
+
+    <!--            Car Two           -->
+    <TextView
+        android:id="@+id/car_two_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/car_one"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:textColor="@color/colorSecondaryDark"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/car_one_tv"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageButton
+        android:id="@+id/delete_car_two_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete_red_24dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginStart="10dp"
+        android:visibility="gone"
+        android:layout_below="@id/delete_car_one_btn"
+        android:layout_toEndOf="@id/car_one_tv"
+        android:background="@null"/>
+
+    <!--            Car Three           -->
+    <TextView
+        android:id="@+id/car_three_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/car_one"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        android:textColor="@color/colorSecondaryDark"
+        android:layout_below="@id/car_two_tv"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageButton
+        android:id="@+id/delete_car_three_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete_red_24dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        android:layout_below="@id/delete_car_two_btn"
+        android:layout_toEndOf="@id/car_one_tv"
+        android:background="@null"/>
 
     <TextView
         android:id="@+id/add_car_title_tv"

@@ -2,7 +2,9 @@ package com.studio.neopanda.docteurgarage
 
 
 import android.content.ActivityNotFoundException
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
@@ -11,18 +13,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_cars.*
-import android.R.id
-import android.R.id.edit
-import android.content.Context
-import android.content.SharedPreferences
-import android.content.Context.MODE_PRIVATE
-
 
 
 class CarsFragment : Fragment() {
 
     private val REQUEST_IMAGE_CAPTURE = 1
     private lateinit var carOne: Car
+    private lateinit var carTwo: Car
+    private lateinit var carThree: Car
+
+    private var carOneExists = false
+    private var carTwoExists = false
+    private var carThreeExists = false
 
     private var carBrand = ""
     private var carModel = ""
@@ -48,19 +50,83 @@ class CarsFragment : Fragment() {
         initCars()
 
         add_car_btn.setOnClickListener {
-            addCar()
+            if (!carOneExists || !carTwoExists || !carThreeExists) {
+                addCar()
+            } else {
+                Toast.makeText(this.activity, "Le maximum est de 3 voitures.", Toast.LENGTH_LONG)
+                    .show()
+            }
         }
 
 //        dispatchTakePictureIntent()
     }
 
     private fun initCars() {
-        val car = activity!!.getSharedPreferences("my_car", MODE_PRIVATE)
-        val carOneExistBrand = car.getBoolean("car_one_exists", false)
-        if (carOneExistBrand){
+        initCarOne()
+        initCarTwo()
+        initCarThree()
+    }
+
+    private fun initCarThree() {
+        val car = activity!!.getSharedPreferences("car_three", MODE_PRIVATE)
+        val carThreeExist = car.getBoolean("car_three_exists", false)
+        if (carThreeExist) {
+            loadCarThree(car)
+            car_three_tv.text = carThree.brand + " " + carThree.model
+            car_three_tv.visibility = View.VISIBLE
+            delete_car_three_btn.visibility = View.VISIBLE
+            delete_car_three_btn.setOnClickListener {
+                val preferences = activity!!.getSharedPreferences("car_three", MODE_PRIVATE)
+                preferences.edit().clear().apply()
+                car_three_tv.text = ""
+                car_three_tv.visibility = View.GONE
+                delete_car_three_btn.visibility = View.GONE
+            }
+        } else {
+            car_three_tv.visibility = View.GONE
+            delete_car_three_btn.visibility = View.GONE
+        }
+    }
+
+    private fun initCarTwo() {
+        val car = activity!!.getSharedPreferences("car_two", MODE_PRIVATE)
+        val carTwoExist = car.getBoolean("car_two_exists", false)
+        if (carTwoExist) {
+            loadCarTwo(car)
+            car_two_tv.text = carTwo.brand + " " + carTwo.model
+            car_two_tv.visibility = View.VISIBLE
+            delete_car_two_btn.visibility = View.VISIBLE
+            delete_car_two_btn.setOnClickListener {
+                val preferences = activity!!.getSharedPreferences("car_two", MODE_PRIVATE)
+                preferences.edit().clear().apply()
+                car_two_tv.text = ""
+                car_two_tv.visibility = View.GONE
+                delete_car_two_btn.visibility = View.GONE
+            }
+        } else {
+            car_three_tv.visibility = View.GONE
+            delete_car_three_btn.visibility = View.GONE
+        }
+    }
+
+    private fun initCarOne() {
+        val car = activity!!.getSharedPreferences("car_one", MODE_PRIVATE)
+        val carOneExist = car.getBoolean("car_one_exists", false)
+        if (carOneExist) {
             loadCarOne(car)
-            car_one_tv.text = carOne.brand + "" + carOne.model
+            car_one_tv.text = carOne.brand + " " + carOne.model
             car_one_tv.visibility = View.VISIBLE
+            delete_car_one_btn.visibility = View.VISIBLE
+            delete_car_one_btn.setOnClickListener {
+                val preferences = activity!!.getSharedPreferences("car_one", MODE_PRIVATE)
+                preferences.edit().clear().apply()
+                car_one_tv.text = ""
+                car_one_tv.visibility = View.GONE
+                delete_car_one_btn.visibility = View.GONE
+            }
+        } else {
+            car_one_tv.visibility = View.GONE
+            delete_car_one_btn.visibility = View.GONE
         }
     }
 
@@ -74,12 +140,39 @@ class CarsFragment : Fragment() {
         carOne.lastEmptying = car.getString("car_last_emptying", "None").toString()
     }
 
+    private fun loadCarTwo(car: SharedPreferences) {
+        carTwo = Car("", "", "", 0, "", "")
+        carTwo.brand = car.getString("car_brand", "None").toString()
+        carTwo.model = car.getString("car_model", "None").toString()
+        carTwo.year = car.getString("car_year", "None").toString()
+        carTwo.kilometers = car.getInt("car_kilometers", 0).toString().toInt()
+        carTwo.lastTC = car.getString("car_last_tc", "None").toString()
+        carTwo.lastEmptying = car.getString("car_last_emptying", "None").toString()
+    }
+
+    private fun loadCarThree(car: SharedPreferences) {
+        carThree = Car("", "", "", 0, "", "")
+        carThree.brand = car.getString("car_brand", "None").toString()
+        carThree.model = car.getString("car_model", "None").toString()
+        carThree.year = car.getString("car_year", "None").toString()
+        carThree.kilometers = car.getInt("car_kilometers", 0).toString().toInt()
+        carThree.lastTC = car.getString("car_last_tc", "None").toString()
+        carThree.lastEmptying = car.getString("car_last_emptying", "None").toString()
+    }
+
     private fun addCar() {
         addSelector = 0
         add_car_btn.visibility = View.GONE
+        car_one_tv.visibility = View.GONE
+        car_two_tv.visibility = View.GONE
+        car_three_tv.visibility = View.GONE
+        delete_car_one_btn.visibility = View.GONE
+        delete_car_two_btn.visibility = View.GONE
+        delete_car_three_btn.visibility = View.GONE
         add_car_title_tv.visibility = View.VISIBLE
         add_car_content_et.visibility = View.VISIBLE
         add_car_controls.visibility = View.VISIBLE
+
 
         navigationControls()
     }
@@ -112,6 +205,7 @@ class CarsFragment : Fragment() {
                 addCarTitle = "Marque du véhicule :"
                 add_car_title_tv.text = addCarTitle
                 add_car_content_et.hint = addCarContent
+                add_car_content_et.text.clear()
             }
             2 -> {
                 addSelector -= 1
@@ -119,6 +213,7 @@ class CarsFragment : Fragment() {
                 addCarTitle = "Modèle du véhicule :"
                 add_car_title_tv.text = addCarTitle
                 add_car_content_et.hint = addCarContent
+                add_car_content_et.text.clear()
             }
             3 -> {
                 addSelector -= 1
@@ -126,6 +221,7 @@ class CarsFragment : Fragment() {
                 addCarTitle = "Année du véhicule :"
                 add_car_title_tv.text = addCarTitle
                 add_car_content_et.hint = addCarContent
+                add_car_content_et.text.clear()
             }
             4 -> {
                 addSelector -= 1
@@ -133,6 +229,7 @@ class CarsFragment : Fragment() {
                 addCarTitle = "Kilométrage :"
                 add_car_title_tv.text = addCarTitle
                 add_car_content_et.hint = addCarContent
+                add_car_content_et.text.clear()
             }
             5 -> {
                 addSelector -= 1
@@ -140,6 +237,7 @@ class CarsFragment : Fragment() {
                 addCarTitle = "Dernier CT :"
                 add_car_title_tv.text = addCarTitle
                 add_car_content_et.hint = addCarContent
+                add_car_content_et.text.clear()
             }
         }
     }
@@ -153,6 +251,7 @@ class CarsFragment : Fragment() {
                 add_car_title_tv.text = addCarTitle
                 add_car_content_et.hint = addCarContent
                 carBrand = add_car_content_et.text.toString()
+                add_car_content_et.text.clear()
             }
             1 -> {
                 addSelector += 1
@@ -161,6 +260,7 @@ class CarsFragment : Fragment() {
                 add_car_title_tv.text = addCarTitle
                 add_car_content_et.hint = addCarContent
                 carModel = add_car_content_et.text.toString()
+                add_car_content_et.text.clear()
             }
             2 -> {
                 addSelector += 1
@@ -169,6 +269,7 @@ class CarsFragment : Fragment() {
                 add_car_title_tv.text = addCarTitle
                 add_car_content_et.hint = addCarContent
                 carYear = add_car_content_et.text.toString()
+                add_car_content_et.text.clear()
             }
             3 -> {
                 addSelector += 1
@@ -177,6 +278,7 @@ class CarsFragment : Fragment() {
                 add_car_title_tv.text = addCarTitle
                 add_car_content_et.hint = addCarContent
                 carKilometers = add_car_content_et.text.toString().toInt()
+                add_car_content_et.text.clear()
             }
             4 -> {
                 addSelector += 1
@@ -185,11 +287,18 @@ class CarsFragment : Fragment() {
                 add_car_title_tv.text = addCarTitle
                 add_car_content_et.hint = addCarContent
                 carLastTechnicalControl = add_car_content_et.text.toString()
+                add_car_content_et.text.clear()
             }
             5 -> {
                 addSelector = 0
                 carLastEmptying = add_car_content_et.text.toString()
                 add_car_btn.visibility = View.VISIBLE
+                car_one_tv.visibility = View.VISIBLE
+                car_two_tv.visibility = View.VISIBLE
+                car_three_tv.visibility = View.VISIBLE
+                delete_car_one_btn.visibility = View.VISIBLE
+                delete_car_two_btn.visibility = View.VISIBLE
+                delete_car_three_btn.visibility = View.VISIBLE
                 add_car_title_tv.visibility = View.GONE
                 add_car_content_et.visibility = View.GONE
                 add_car_controls.visibility = View.GONE
@@ -200,16 +309,47 @@ class CarsFragment : Fragment() {
     }
 
     private fun createCar() {
-        val car = activity!!.getSharedPreferences("my_car", MODE_PRIVATE)
-        val edt = car.edit()
-        edt.putBoolean("car_one_exists", true)
-        edt.putString("car_brand", carBrand)
-        edt.putString("car_model", carModel)
-        edt.putString("car_year", carYear)
-        edt.putInt("car_kilometers", carKilometers)
-        edt.putString("car_last_tc", carLastTechnicalControl)
-        edt.putString("car_last_emptying", carLastEmptying)
-        edt.apply()
+        if (!carOneExists && !carTwoExists && !carThreeExists) {
+            val car = activity!!.getSharedPreferences("car_one", MODE_PRIVATE)
+            val edt = car.edit()
+            edt.putBoolean("car_one_exists", true)
+            edt.putString("car_brand", carBrand)
+            edt.putString("car_model", carModel)
+            edt.putString("car_year", carYear)
+            edt.putInt("car_kilometers", carKilometers)
+            edt.putString("car_last_tc", carLastTechnicalControl)
+            edt.putString("car_last_emptying", carLastEmptying)
+            edt.apply()
+
+            Toast.makeText(this.activity, "Voiture créée !", Toast.LENGTH_LONG).show()
+        } else if (carOneExists && !carTwoExists && !carThreeExists) {
+            val car = activity!!.getSharedPreferences("car_two", MODE_PRIVATE)
+            val edt = car.edit()
+            edt.putBoolean("car_two_exists", true)
+            edt.putString("car_brand", carBrand)
+            edt.putString("car_model", carModel)
+            edt.putString("car_year", carYear)
+            edt.putInt("car_kilometers", carKilometers)
+            edt.putString("car_last_tc", carLastTechnicalControl)
+            edt.putString("car_last_emptying", carLastEmptying)
+            edt.apply()
+
+            Toast.makeText(this.activity, "Voiture créée !", Toast.LENGTH_LONG).show()
+        } else if (carOneExists && carTwoExists && !carThreeExists) {
+            val car = activity!!.getSharedPreferences("car_three", MODE_PRIVATE)
+            val edt = car.edit()
+            edt.putBoolean("car_three_exists", true)
+            edt.putString("car_brand", carBrand)
+            edt.putString("car_model", carModel)
+            edt.putString("car_year", carYear)
+            edt.putInt("car_kilometers", carKilometers)
+            edt.putString("car_last_tc", carLastTechnicalControl)
+            edt.putString("car_last_emptying", carLastEmptying)
+            edt.apply()
+
+            Toast.makeText(this.activity, "Voiture créée !", Toast.LENGTH_LONG).show()
+        }
+
     }
 
     private fun dispatchTakePictureIntent() {
