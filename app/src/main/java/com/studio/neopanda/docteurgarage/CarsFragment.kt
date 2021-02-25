@@ -22,9 +22,9 @@ class CarsFragment : Fragment() {
     private lateinit var carTwo: Car
     private lateinit var carThree: Car
 
-    private var carOneExists = false
-    private var carTwoExists = false
-    private var carThreeExists = false
+    private var carOneIsCreated = false
+    private var carTwoIsCreated = false
+    private var carThreeIsCreated = false
 
     private var carBrand = ""
     private var carModel = ""
@@ -50,7 +50,7 @@ class CarsFragment : Fragment() {
         initCars()
 
         add_car_btn.setOnClickListener {
-            if (!carOneExists || !carTwoExists || !carThreeExists) {
+            if (!carOneIsCreated || !carTwoIsCreated || !carThreeIsCreated) {
                 addCar()
             } else {
                 Toast.makeText(this.activity, "Le maximum est de 3 voitures.", Toast.LENGTH_LONG)
@@ -71,6 +71,7 @@ class CarsFragment : Fragment() {
         val car = activity!!.getSharedPreferences("car_three", MODE_PRIVATE)
         val carThreeExist = car.getBoolean("car_three_exists", false)
         if (carThreeExist) {
+            carThreeIsCreated = true
             loadCarThree(car)
             car_three_tv.text = carThree.brand + " " + carThree.model
             car_three_tv.visibility = View.VISIBLE
@@ -92,6 +93,7 @@ class CarsFragment : Fragment() {
         val car = activity!!.getSharedPreferences("car_two", MODE_PRIVATE)
         val carTwoExist = car.getBoolean("car_two_exists", false)
         if (carTwoExist) {
+            carTwoIsCreated = true
             loadCarTwo(car)
             car_two_tv.text = carTwo.brand + " " + carTwo.model
             car_two_tv.visibility = View.VISIBLE
@@ -113,6 +115,7 @@ class CarsFragment : Fragment() {
         val car = activity!!.getSharedPreferences("car_one", MODE_PRIVATE)
         val carOneExist = car.getBoolean("car_one_exists", false)
         if (carOneExist) {
+            carOneIsCreated = true
             loadCarOne(car)
             car_one_tv.text = carOne.brand + " " + carOne.model
             car_one_tv.visibility = View.VISIBLE
@@ -309,7 +312,7 @@ class CarsFragment : Fragment() {
     }
 
     private fun createCar() {
-        if (!carOneExists && !carTwoExists && !carThreeExists) {
+        if (!carOneIsCreated && !carTwoIsCreated && !carThreeIsCreated) {
             val car = activity!!.getSharedPreferences("car_one", MODE_PRIVATE)
             val edt = car.edit()
             edt.putBoolean("car_one_exists", true)
@@ -322,7 +325,7 @@ class CarsFragment : Fragment() {
             edt.apply()
 
             Toast.makeText(this.activity, "Voiture créée !", Toast.LENGTH_LONG).show()
-        } else if (carOneExists && !carTwoExists && !carThreeExists) {
+        } else if (carOneIsCreated && !carTwoIsCreated && !carThreeIsCreated) {
             val car = activity!!.getSharedPreferences("car_two", MODE_PRIVATE)
             val edt = car.edit()
             edt.putBoolean("car_two_exists", true)
@@ -335,7 +338,7 @@ class CarsFragment : Fragment() {
             edt.apply()
 
             Toast.makeText(this.activity, "Voiture créée !", Toast.LENGTH_LONG).show()
-        } else if (carOneExists && carTwoExists && !carThreeExists) {
+        } else if (carOneIsCreated && carTwoIsCreated && !carThreeIsCreated) {
             val car = activity!!.getSharedPreferences("car_three", MODE_PRIVATE)
             val edt = car.edit()
             edt.putBoolean("car_three_exists", true)
