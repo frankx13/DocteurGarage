@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.navigation_contacts -> {
-                    val fragment = ContactsFragment()
+                R.id.navigation_carnotes -> {
+                    val fragment = ServiceBoardFragment()
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.container, fragment, fragment.javaClass.simpleName)
                         .commit()

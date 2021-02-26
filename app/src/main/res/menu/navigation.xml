@@ -7,7 +7,7 @@ android:id="@+id/navigation_cars"
 android:id="@+id/navigation_guides"
     android:icon="@drawable/ic_event_note_black_24dp"
     android:title="@string/guides"/><item
-android:id="@+id/navigation_contacts"
+android:id="@+id/navigation_carnotes"
     android:icon="@drawable/ic_contacts_black_24dp"
-    android:title="@string/contacts"/>
+    android:title="@string/service_book"/>
     </menu>
