@@ -9,9 +9,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/title_date"
+        android:text="@string/title_guide"
         android:textSize="20sp"
         android:padding="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_guide_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/date_guide"
+        android:textSize="15sp"
+        android:padding="5dp"/>
 
     <View
         android:layout_width="match_parent"

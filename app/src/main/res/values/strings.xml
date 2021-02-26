@@ -12,5 +12,6 @@
     <string name="type_your_car_content">Marque du véhicule :</string>
     <string name="car_one">Car One</string>
     <string name="guides">Guides</string>
-    <string name="title_date">Titre - Date</string>
+    <string name="title_guide">Titre</string>
+    <string name="date_guide">Date</string>
 </resources>

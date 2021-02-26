@@ -1,6 +1,5 @@
 package com.studio.neopanda.docteurgarage
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,11 +24,12 @@ class GuidesFragment : Fragment() {
 
         addGuides()
         guides_rv.layoutManager = LinearLayoutManager(activity)
-        guides_rv.adapter = GuidesAdapter(guides, this)
+        guides_rv.adapter = GuidesAdapter(guides, activity!!)
     }
 
     private fun addGuides() {
-        guides.add(Guide(
+        guides.add(
+            Guide(
                 "Faire le niveau d'huile",
                 "25-02-2021",
                 "Préparation : \n" +
@@ -45,6 +45,30 @@ class GuidesFragment : Fragment() {
                         "et réitérer la vérification afin de ne pas dépasser le niveau MAX."
             )
         )
-        guides.add(Guide("Changer une roue", "20-02-2021", "Change la roue"))
+        guides.add(Guide("Changer une roue", "24-02-2021", "Change la roue"))
+        guides.add(
+            Guide(
+                "Surchauffe moteur",
+                "26-02-2021",
+                "Comment réagir en cas de surchauffe moteur ?"
+            )
+        )
+        guides.add(
+            Guide(
+                "Amplifier le signal radio",
+                "22-02-2021",
+                "Voici une petite astuce pour augmenter la portée de réception de votre " +
+                        "autoradio, vous aurez juste besoin d'une fourchette."
+            )
+        )
+        guides.add(
+            Guide(
+                "Informations utiles",
+                "20-02-2021",
+                "Voici une collection d'informations universelles sur votre voiture qui " +
+                        "vous serviront au moins une fois à coup sur."
+            )
+        )
+        guides.add(Guide("Vitre cassée", "16-02-2021", "Change la roue"))
     }
 }
