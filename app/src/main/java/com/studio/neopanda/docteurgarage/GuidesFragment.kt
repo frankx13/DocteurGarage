@@ -36,7 +36,7 @@ class GuidesFragment : Fragment() {
                 "Préparation : \n" +
                         "- Un chiffon\n" +
                         "- De l'huile moteur adaptée à votre véhicule\n\n" +
-                        "Vérification : \n" +
+                        "Action : \n" +
                         "1) Localiser l'indicateur de la jauge de niveau d'huile (le plus souvent, " +
                         "il s'agit d'une longue + languette avec un embout qui se dévisse au bout.)\n" +
                         "2) Tirer l'indicateur et essuyer l'extrémité avec le chiffon.\n" +
@@ -49,7 +49,21 @@ class GuidesFragment : Fragment() {
         guides.add(
             Guide(
                 1,
-                "Changer une roue", "24-02-2021", "Change la roue"
+                "Changer une roue", "24-02-2021", "Préparation : \n" +
+                        "- Une roue de secours \n" +
+                        "- Un crick ou tout moyen permettant de surélever sans danger le véhicule \n" +
+                        "- Une clef en croix (= démonte-roue)\n\n" +
+                        "Action :\n" +
+                        "1) Placer le véhicule sur une surface plate et éteignez le contact.\n" +
+                        "2) Repérez l'emplacement prévu pour surélever la voiture près de la roue à" +
+                        " remplacer (on le reconnait car c'est l'endroit qui semble le plus résistant" +
+                        " et est de forme arrondi comme le haut du krick). \n" +
+                        "3) Positionnez le krick sous l'emplacement prévu. \n" +
+                        "4) Faites monter le krick jusqu'à ce que l'entièreté de la roue soit soulevé.\n" +
+                        "5) Enlevez les écrous avec la clef en croix (on tourne vers la gauche pour dévisser). \n" +
+                        "6) Enlevez la roue en la tirant vers vous. Remplacez par la roue de secours. \n" +
+                        "7) Remettez les écrous en position, puis faites redescendre le krick doucement.\n\n" +
+                        " Le tour est joué."
             )
         )
         guides.add(

@@ -36,7 +36,6 @@ class GuidesAdapter(private val guides: ArrayList<Guide>, private val context: C
         holder.tvGuideContent.text = guides[position].content
 
         holder.tvGuidesContainer.setOnClickListener {
-            Toast.makeText(context, "Clicked on item", Toast.LENGTH_LONG).show()
             if (!isContentOpened) {
                 holder.tvGuideContent.visibility = View.VISIBLE
                 isContentOpened = true
