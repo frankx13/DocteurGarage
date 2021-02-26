@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.fragment_guides.*
 
 class GuidesFragment : Fragment() {
 
-    val guides: ArrayList<Guide> = ArrayList()
+    private val guides: ArrayList<Guide> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +30,7 @@ class GuidesFragment : Fragment() {
     private fun addGuides() {
         guides.add(
             Guide(
+                0,
                 "Faire le niveau d'huile",
                 "25-02-2021",
                 "Préparation : \n" +
@@ -45,9 +46,15 @@ class GuidesFragment : Fragment() {
                         "et réitérer la vérification afin de ne pas dépasser le niveau MAX."
             )
         )
-        guides.add(Guide("Changer une roue", "24-02-2021", "Change la roue"))
         guides.add(
             Guide(
+                1,
+                "Changer une roue", "24-02-2021", "Change la roue"
+            )
+        )
+        guides.add(
+            Guide(
+                2,
                 "Surchauffe moteur",
                 "26-02-2021",
                 "Comment réagir en cas de surchauffe moteur ?"
@@ -55,6 +62,7 @@ class GuidesFragment : Fragment() {
         )
         guides.add(
             Guide(
+                3,
                 "Amplifier le signal radio",
                 "22-02-2021",
                 "Voici une petite astuce pour augmenter la portée de réception de votre " +
@@ -63,12 +71,18 @@ class GuidesFragment : Fragment() {
         )
         guides.add(
             Guide(
+                4,
                 "Informations utiles",
                 "20-02-2021",
                 "Voici une collection d'informations universelles sur votre voiture qui " +
                         "vous serviront au moins une fois à coup sur."
             )
         )
-        guides.add(Guide("Vitre cassée", "16-02-2021", "Change la roue"))
+        guides.add(
+            Guide(
+                5,
+                "Vitre cassée", "16-02-2021", "Change la roue"
+            )
+        )
     }
 }
