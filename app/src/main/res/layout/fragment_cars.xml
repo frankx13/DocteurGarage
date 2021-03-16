@@ -100,6 +100,7 @@
         android:layout_toEndOf="@id/car_one_tv"
         android:background="@null"/>
 
+    <!--            Add a car           -->
     <TextView
         android:id="@+id/add_car_title_tv"
         android:layout_width="wrap_content"
@@ -162,6 +163,7 @@
 
     </LinearLayout>
 
+    <!--            Background           -->
     <View
         android:id="@+id/empty_view_car"
         android:layout_width="match_parent"
