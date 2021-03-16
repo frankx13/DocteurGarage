@@ -67,7 +67,7 @@ class CarsFragment : Fragment() {
                 val carSelected = activity!!.getSharedPreferences("car_selected", MODE_PRIVATE)
                 val edt = carSelected.edit()
                 edt.putBoolean("car_selected_exists", true)
-                edt.putString("car_selected_name", carOne.brand)
+                edt.putString("car_selected_name", carOne.brand + " " + carOne.model)
                 edt.apply()
 
             }
@@ -77,6 +77,12 @@ class CarsFragment : Fragment() {
                 car_one_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
                 car_two_tv.setTextColor(resources.getColor(R.color.colorItemFocus))
                 car_three_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
+
+                val carSelected = activity!!.getSharedPreferences("car_selected", MODE_PRIVATE)
+                val edt = carSelected.edit()
+                edt.putBoolean("car_selected_exists", true)
+                edt.putString("car_selected_name", carTwo.brand + " " + carTwo.model)
+                edt.apply()
             }
         }
         if (carThreeIsCreated) {
@@ -84,6 +90,12 @@ class CarsFragment : Fragment() {
                 car_one_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
                 car_two_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
                 car_three_tv.setTextColor(resources.getColor(R.color.colorItemFocus))
+
+                val carSelected = activity!!.getSharedPreferences("car_selected", MODE_PRIVATE)
+                val edt = carSelected.edit()
+                edt.putBoolean("car_selected_exists", true)
+                edt.putString("car_selected_name", carThree.brand + " " + carThree.model)
+                edt.apply()
             }
         }
 
