@@ -52,4 +52,10 @@ class MainActivity : AppCompatActivity() {
             }
             false
         }
+
+    override fun onResume() {
+        super.onResume()
+
+        
+    }
 }

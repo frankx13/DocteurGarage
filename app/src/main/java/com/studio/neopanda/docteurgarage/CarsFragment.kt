@@ -47,7 +47,9 @@ class CarsFragment : Fragment() {
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
 
+        launchLoader()
         initCars()
+        stopLoader()
 
         add_car_btn.setOnClickListener {
             if (!carOneIsCreated || !carTwoIsCreated || !carThreeIsCreated) {
@@ -100,6 +102,14 @@ class CarsFragment : Fragment() {
         }
 
 //        dispatchTakePictureIntent()
+    }
+
+    private fun stopLoader() {
+
+    }
+
+    private fun launchLoader() {
+
     }
 
     private fun initCars() {
