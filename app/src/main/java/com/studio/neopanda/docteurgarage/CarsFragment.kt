@@ -1,6 +1,7 @@
 package com.studio.neopanda.docteurgarage
 
 
+import android.app.ProgressDialog
 import android.content.ActivityNotFoundException
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
@@ -10,9 +11,12 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import kotlinx.android.synthetic.main.fragment_cars.*
+import java.util.*
 
 
 class CarsFragment : Fragment() {
@@ -37,6 +41,8 @@ class CarsFragment : Fragment() {
     private var addCarContent = ""
     private var addCarTitle = ""
 
+    private var progressDialog: ProgressDialog? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,9 +53,9 @@ class CarsFragment : Fragment() {
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
 
-        launchLoader()
+        lockUI()
         initCars()
-        stopLoader()
+        unlockUI()
 
         add_car_btn.setOnClickListener {
             if (!carOneIsCreated || !carTwoIsCreated || !carThreeIsCreated) {
@@ -104,12 +110,42 @@ class CarsFragment : Fragment() {
 //        dispatchTakePictureIntent()
     }
 
-    private fun stopLoader() {
-
+    private fun lockUI() {
+        disableUserInteraction()
+        showProgressDialog()
+        loading_mask_message.visibility = View.VISIBLE
     }
 
-    private fun launchLoader() {
+    private fun unlockUI() {
+        enableUserInteraction()
+        dismissProgressDialog()
+        loading_mask_message.visibility = View.GONE
+    }
 
+    private fun enableUserInteraction() {
+        Objects.requireNonNull<FragmentActivity>(activity).window
+            .clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+    }
+
+    private fun disableUserInteraction() {
+        Objects.requireNonNull<FragmentActivity>(activity).window.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+        )
+    }
+
+    private fun showProgressDialog() {
+        if (progressDialog == null) {
+            progressDialog = ProgressDialog(context)
+            progressDialog!!.isIndeterminate = true
+            progressDialog!!.setCancelable(false)
+        }
+        progressDialog!!.setMessage(getString(R.string.loading_message))
+        progressDialog!!.show()
+    }
+
+    private fun dismissProgressDialog() {
+        progressDialog?.dismiss()
     }
 
     private fun initCars() {

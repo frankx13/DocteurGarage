@@ -180,4 +180,12 @@
         android:src="@drawable/ic_directions_car_black_24dp"
         android:contentDescription="@string/car_image" />
 
+    <LinearLayout
+        android:id="@+id/loading_mask_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B0000000 "
+        android:visibility="gone"
+        android:orientation="vertical" />
+
 </RelativeLayout>
