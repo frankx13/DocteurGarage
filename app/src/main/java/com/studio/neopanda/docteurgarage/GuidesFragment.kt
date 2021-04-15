@@ -95,7 +95,10 @@ class GuidesFragment : Fragment() {
         guides.add(
             Guide(
                 5,
-                "Vitre cassée", "16-02-2021", "Change la roue"
+                "Vitre cassée", "16-02-2021", "Si votre vitre est cassée et que ce" +
+                        "n'est pas le pare-brise, vous pouvez faire une réparation rapide en" +
+                        "attendant de remplacer la vitre, en scotchant un carton de la taille de " +
+                        "votre vitre avec du scotch résistant (scotch armé, scotch PVC...)."
             )
         )
     }
