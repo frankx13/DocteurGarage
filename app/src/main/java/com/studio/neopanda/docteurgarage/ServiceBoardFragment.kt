@@ -36,7 +36,15 @@ class ServiceBoardFragment : Fragment() {
     private fun loadSelectedCar() {
         val selectedCar = activity!!.getSharedPreferences("car_selected", Context.MODE_PRIVATE)
         val selectedCarName = selectedCar.getString("car_selected_name", "Empty")
+        val selectedCarYear = selectedCar.getString("car_selected_year", "Empty")
+        val selectedCarKilometers = selectedCar.getInt("car_selected_kilometers", 0)
+        val selectedCarLastTC = selectedCar.getString("car_selected_last_TC", "Empty")
+        val selectedCarLastEmptying = selectedCar.getString("car_selected_last_emptying", "Empty")
         car_name_tv.text = selectedCarName
+        car_kilometers_tv.text = resources.getString(R.string.car_kilometers, selectedCarKilometers)
+        car_last_checkup_tv.text = resources.getString(R.string.car_last_checkup, selectedCarLastTC)
+        car_last_emptying_tv.text =
+            resources.getString(R.string.car_last_emptying, selectedCarLastEmptying)
     }
 
     private fun setAnnotationsListener() {

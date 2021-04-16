@@ -6,4 +6,5 @@ data class Car(
     var year: String,
     var kilometers: Int,
     var lastTC: String,
-    var lastEmptying: String)
+    var lastEmptying: String
+)

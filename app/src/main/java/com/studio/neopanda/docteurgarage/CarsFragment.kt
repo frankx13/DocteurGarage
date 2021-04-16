@@ -76,6 +76,10 @@ class CarsFragment : Fragment() {
                 val edt = carSelected.edit()
                 edt.putBoolean("car_selected_exists", true)
                 edt.putString("car_selected_name", carOne.brand + " " + carOne.model)
+                edt.putString("car_selected_year", carOne.year)
+                edt.putInt("car_selected_kilometers", carOne.kilometers)
+                edt.putString("car_selected_last_TC", carOne.lastTC)
+                edt.putString("car_selected_last_emptying", carOne.lastEmptying)
                 edt.apply()
 
             }
@@ -90,6 +94,10 @@ class CarsFragment : Fragment() {
                 val edt = carSelected.edit()
                 edt.putBoolean("car_selected_exists", true)
                 edt.putString("car_selected_name", carTwo.brand + " " + carTwo.model)
+                edt.putString("car_selected_year", carTwo.year)
+                edt.putInt("car_selected_kilometers", carTwo.kilometers)
+                edt.putString("car_selected_last_TC", carTwo.lastTC)
+                edt.putString("car_selected_last_emptying", carTwo.lastEmptying)
                 edt.apply()
             }
         }
@@ -103,6 +111,10 @@ class CarsFragment : Fragment() {
                 val edt = carSelected.edit()
                 edt.putBoolean("car_selected_exists", true)
                 edt.putString("car_selected_name", carThree.brand + " " + carThree.model)
+                edt.putString("car_selected_year", carThree.year)
+                edt.putInt("car_selected_kilometers", carThree.kilometers)
+                edt.putString("car_selected_last_TC", carThree.lastTC)
+                edt.putString("car_selected_last_emptying", carThree.lastEmptying)
                 edt.apply()
             }
         }
