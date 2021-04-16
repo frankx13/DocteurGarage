@@ -43,6 +43,8 @@ class CarsFragment : Fragment() {
 
     private var progressDialog: ProgressDialog? = null
 
+    private lateinit var timestamp: Calendar
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -421,6 +423,8 @@ class CarsFragment : Fragment() {
             edt.putInt("car_kilometers", carKilometers)
             edt.putString("car_last_tc", carLastTechnicalControl)
             edt.putString("car_last_emptying", carLastEmptying)
+            timestamp =  Calendar.getInstance()
+            edt.putString("timestamp", timestamp.toString())
             edt.apply()
 
             Toast.makeText(this.activity, "Voiture créée !", Toast.LENGTH_LONG).show()
