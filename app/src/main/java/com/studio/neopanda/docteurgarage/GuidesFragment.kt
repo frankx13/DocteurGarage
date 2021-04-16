@@ -71,7 +71,20 @@ class GuidesFragment : Fragment() {
                 2,
                 "Surchauffe moteur",
                 "26-02-2021",
-                "Comment réagir en cas de surchauffe moteur ?"
+                "Comment réagir en cas de surchauffe moteur ?\n\n" +
+                        "1) Si la jauge de chaleur dépasse les 100 ou entre dans la zone rouge," +
+                        "ralentissez jusqu'à trouver un endroit où vous arrêtez sur le bas-coté de " +
+                        "la route.\n" +
+                        "2) Prenez les mesures de sécurité adaptés si vous êtes sur le bord d'une" +
+                        "route (triangle + gilet jaune).\n" +
+                        "3) La plupart du temps, les problèmes de surchauffe viennent du réservoir" +
+                        " d'eau, ouvrez le capot, calez la tige sur le capot dans l'emplacement qui" +
+                        "lui est réservé dans le moteur.\n" +
+                        "4) Repérez le réservoir d'eau, ouvrez le :\n" +
+                        "   - S'il est vide, vous avez probablement une fuite, tentez de remettre de" +
+                        " l'eau si vous en avez, sinon appelez quelqu'un pour vous dépanner. \n" +
+                        "   - S'il n'est pas vide, une cause fréquente de surchauffe est une durite" +
+                        "sectionnée ou un joint abimé. Appelez quelqu'un pour vous dépanner."
             )
         )
         guides.add(
