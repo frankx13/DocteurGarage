@@ -1,6 +1,7 @@
 package com.studio.neopanda.docteurgarage
 
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.ActivityNotFoundException
 import android.content.Context.MODE_PRIVATE
@@ -46,6 +47,8 @@ class CarsFragment : Fragment() {
 
     private lateinit var timestampCreation: String
 
+    private val inputTextNotifications = ""
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -59,6 +62,15 @@ class CarsFragment : Fragment() {
         lockUI()
         initCars()
         unlockUI()
+        menu_notifications.setOnClickListener {
+            val intent = Intent(this.activity, NotificationsActivity::class.java)
+            startActivity(intent)
+        }
+
+        menu_car_manager.setOnClickListener {
+            val intent = Intent(this.activity, CarManagerActivity::class.java)
+            startActivity(intent)
+        }
 
         add_car_btn.setOnClickListener {
             if (!carOneIsCreated || !carTwoIsCreated || !carThreeIsCreated) {
@@ -181,11 +193,21 @@ class CarsFragment : Fragment() {
             car_three_tv.visibility = View.VISIBLE
             delete_car_three_btn.visibility = View.VISIBLE
             delete_car_three_btn.setOnClickListener {
-                val preferences = activity!!.getSharedPreferences("car_three", MODE_PRIVATE)
-                preferences.edit().clear().apply()
-                car_three_tv.text = ""
-                car_three_tv.visibility = View.GONE
-                delete_car_three_btn.visibility = View.GONE
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
+                builder.setTitle("Supprimer la voiture ?")
+
+                // Set up the buttons
+                builder.setPositiveButton("Yes") { dialog, which ->
+                    val preferences = activity!!.getSharedPreferences("car_three", MODE_PRIVATE)
+                    preferences.edit().clear().apply()
+                    car_three_tv.text = ""
+                    car_three_tv.visibility = View.GONE
+                    delete_car_three_btn.visibility = View.GONE
+                    Toast.makeText(this.activity, "Voiture supprimée !", Toast.LENGTH_LONG).show()
+                }
+                builder.setNegativeButton("No") { dialog, which -> dialog.cancel() }
+
+                builder.show()
             }
         } else {
             car_three_tv.visibility = View.GONE
@@ -203,11 +225,21 @@ class CarsFragment : Fragment() {
             car_two_tv.visibility = View.VISIBLE
             delete_car_two_btn.visibility = View.VISIBLE
             delete_car_two_btn.setOnClickListener {
-                val preferences = activity!!.getSharedPreferences("car_two", MODE_PRIVATE)
-                preferences.edit().clear().apply()
-                car_two_tv.text = ""
-                car_two_tv.visibility = View.GONE
-                delete_car_two_btn.visibility = View.GONE
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
+                builder.setTitle("Supprimer la voiture ?")
+
+                // Set up the buttons
+                builder.setPositiveButton("Yes") { dialog, which ->
+                    val preferences = activity!!.getSharedPreferences("car_two", MODE_PRIVATE)
+                    preferences.edit().clear().apply()
+                    car_two_tv.text = ""
+                    car_two_tv.visibility = View.GONE
+                    delete_car_two_btn.visibility = View.GONE
+                    Toast.makeText(this.activity, "Voiture supprimée !", Toast.LENGTH_LONG).show()
+                }
+                builder.setNegativeButton("No") { dialog, which -> dialog.cancel() }
+
+                builder.show()
             }
         } else {
             car_three_tv.visibility = View.GONE
@@ -225,11 +257,21 @@ class CarsFragment : Fragment() {
             car_one_tv.visibility = View.VISIBLE
             delete_car_one_btn.visibility = View.VISIBLE
             delete_car_one_btn.setOnClickListener {
-                val preferences = activity!!.getSharedPreferences("car_one", MODE_PRIVATE)
-                preferences.edit().clear().apply()
-                car_one_tv.text = ""
-                car_one_tv.visibility = View.GONE
-                delete_car_one_btn.visibility = View.GONE
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
+                builder.setTitle("Supprimer la voiture ?")
+
+                // Set up the buttons
+                builder.setPositiveButton("Yes") { dialog, which ->
+                    val preferences = activity!!.getSharedPreferences("car_one", MODE_PRIVATE)
+                    preferences.edit().clear().apply()
+                    car_one_tv.text = ""
+                    car_one_tv.visibility = View.GONE
+                    delete_car_one_btn.visibility = View.GONE
+                    Toast.makeText(this.activity, "Voiture supprimée !", Toast.LENGTH_LONG).show()
+                }
+                builder.setNegativeButton("No") { dialog, which -> dialog.cancel() }
+
+                builder.show()
             }
         } else {
             car_one_tv.visibility = View.GONE
