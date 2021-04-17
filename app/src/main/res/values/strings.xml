@@ -34,4 +34,6 @@
     <string name="car_alternator_belt_annotation">Courroie (altern.) changée à %1$s kms.</string>
     <string name="car_timing_belt_annotation">Courroie (distrib.) changée à %1$s kms.</string>
     <string name="loading_message">Chargement…</string>
+    <string name="add_notification">Création</string>
+    <string name="view_notification">Consultation</string>
 </resources>
