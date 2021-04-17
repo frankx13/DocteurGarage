@@ -1,7 +1,6 @@
 package com.studio.neopanda.docteurgarage
 
 
-import android.app.Activity
 import android.app.ProgressDialog
 import android.content.ActivityNotFoundException
 import android.content.Context.MODE_PRIVATE
@@ -75,6 +74,7 @@ class CarsFragment : Fragment() {
                 car_one_tv.setTextColor(resources.getColor(R.color.colorItemFocus))
                 car_two_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
                 car_three_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
+                car_selected_menu_layout.visibility = View.VISIBLE
 
                 val carSelected = activity!!.getSharedPreferences("car_selected", MODE_PRIVATE)
                 val edt = carSelected.edit()
@@ -85,7 +85,6 @@ class CarsFragment : Fragment() {
                 edt.putString("car_selected_last_TC", carOne.lastTC)
                 edt.putString("car_selected_last_emptying", carOne.lastEmptying)
                 edt.apply()
-
             }
         }
         if (carTwoIsCreated) {
@@ -93,6 +92,7 @@ class CarsFragment : Fragment() {
                 car_one_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
                 car_two_tv.setTextColor(resources.getColor(R.color.colorItemFocus))
                 car_three_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
+                car_selected_menu_layout.visibility = View.VISIBLE
 
                 val carSelected = activity!!.getSharedPreferences("car_selected", MODE_PRIVATE)
                 val edt = carSelected.edit()
@@ -110,6 +110,7 @@ class CarsFragment : Fragment() {
                 car_one_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
                 car_two_tv.setTextColor(resources.getColor(R.color.colorSecondaryDark))
                 car_three_tv.setTextColor(resources.getColor(R.color.colorItemFocus))
+                car_selected_menu_layout.visibility = View.VISIBLE
 
                 val carSelected = activity!!.getSharedPreferences("car_selected", MODE_PRIVATE)
                 val edt = carSelected.edit()

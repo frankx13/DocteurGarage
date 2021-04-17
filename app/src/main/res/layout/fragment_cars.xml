@@ -12,93 +12,93 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
-        android:textSize="20sp"
         android:background="@color/colorSecondary"
-        android:padding="10dp"
-        android:textStyle="bold"
-        android:visibility="visible"
         android:drawableStart="@drawable/ic_add_white_24dp"
         android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="@string/add_a_car"
         android:textColor="@color/colorSecondaryText"
-        android:text="@string/add_a_car"/>
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="visible" />
 
-<!--            Car One           -->
+    <!--            Car One           -->
     <TextView
         android:id="@+id/car_one_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/add_car_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
         android:text="@string/car_one"
+        android:textColor="@color/colorSecondaryDark"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:visibility="gone"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/colorSecondaryDark"
-        android:layout_below="@id/add_car_btn"
-        android:layout_centerHorizontal="true"/>
+        android:visibility="gone" />
 
     <ImageButton
         android:id="@+id/delete_car_one_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_delete_red_24dp"
+        android:layout_below="@id/add_car_btn"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:visibility="gone"
-        android:layout_below="@id/add_car_btn"
         android:layout_toEndOf="@id/car_one_tv"
-        android:background="@null"/>
+        android:background="@null"
+        android:src="@drawable/ic_delete_red_24dp"
+        android:visibility="gone" />
 
     <!--            Car Two           -->
     <TextView
         android:id="@+id/car_two_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/car_one_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
         android:text="@string/car_one"
+        android:textColor="@color/colorSecondaryDark"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:visibility="gone"
-        android:textColor="@color/colorSecondaryDark"
-        android:layout_marginTop="15dp"
-        android:layout_below="@id/car_one_tv"
-        android:layout_centerHorizontal="true"/>
+        android:visibility="gone" />
 
     <ImageButton
         android:id="@+id/delete_car_two_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_delete_red_24dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginStart="10dp"
-        android:visibility="gone"
         android:layout_below="@id/delete_car_one_btn"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="17dp"
         android:layout_toEndOf="@id/car_one_tv"
-        android:background="@null"/>
+        android:background="@null"
+        android:src="@drawable/ic_delete_red_24dp"
+        android:visibility="gone" />
 
     <!--            Car Three           -->
     <TextView
         android:id="@+id/car_three_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/car_two_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
         android:text="@string/car_one"
+        android:textColor="@color/colorSecondaryDark"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginTop="15dp"
-        android:visibility="gone"
-        android:textColor="@color/colorSecondaryDark"
-        android:layout_below="@id/car_two_tv"
-        android:layout_centerHorizontal="true"/>
+        android:visibility="gone" />
 
     <ImageButton
         android:id="@+id/delete_car_three_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_delete_red_24dp"
+        android:layout_below="@id/delete_car_two_btn"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:visibility="gone"
-        android:layout_below="@id/delete_car_two_btn"
         android:layout_toEndOf="@id/car_one_tv"
-        android:background="@null"/>
+        android:background="@null"
+        android:src="@drawable/ic_delete_red_24dp"
+        android:visibility="gone" />
 
     <!--            Add a car           -->
     <TextView
@@ -107,35 +107,35 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
-        android:textStyle="italic"
-        android:visibility="gone"
-        android:textSize="22sp"
+        android:text="@string/type_your_car_content"
         android:textColor="@color/colorSecondaryText"
-        android:text="@string/type_your_car_content"/>
+        android:textSize="22sp"
+        android:textStyle="italic"
+        android:visibility="gone" />
 
     <EditText
         android:id="@+id/add_car_content_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/enter_the_content_here"
-        android:textColorHint="@android:color/white"
-        android:textStyle="bold"
-        android:visibility="gone"
-        android:textSize="18sp"
-        android:padding="10dp"
         android:layout_below="@id/add_car_title_tv"
-        android:background="@color/colorPrimaryDark"/>
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimaryDark"
+        android:hint="@string/enter_the_content_here"
+        android:padding="10dp"
+        android:textColorHint="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/add_car_controls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:visibility="gone"
+        android:layout_below="@id/add_car_content_et"
         android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:layout_below="@id/add_car_content_et">
+        android:visibility="gone">
 
         <ImageButton
             android:id="@+id/add_control_previous"
@@ -143,7 +143,7 @@
             android:layout_height="75dp"
             android:layout_margin="3dp"
             android:background="@color/colorPrimary"
-            android:src="@drawable/ic_navigate_before_black_24dp"/>
+            android:src="@drawable/ic_navigate_before_black_24dp" />
 
         <ImageButton
             android:id="@+id/add_control_cancel"
@@ -151,7 +151,7 @@
             android:layout_height="75dp"
             android:layout_margin="3dp"
             android:background="@color/colorPrimary"
-            android:src="@drawable/ic_cancel_black_24dp"/>
+            android:src="@drawable/ic_cancel_black_24dp" />
 
         <ImageButton
             android:id="@+id/add_control_next"
@@ -159,7 +159,7 @@
             android:layout_height="75dp"
             android:layout_margin="3dp"
             android:background="@color/colorPrimary"
-            android:src="@drawable/ic_navigate_next_black_24dp"/>
+            android:src="@drawable/ic_navigate_next_black_24dp" />
 
     </LinearLayout>
 
@@ -168,24 +168,52 @@
         android:id="@+id/empty_view_car"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/colorPrimaryDark"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        android:background="@color/colorPrimaryDark" />
+
+    <LinearLayout
+        android:id="@+id/car_selected_menu_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/empty_view_car"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/menu_notifications"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_blue_dark"
+            android:src="@drawable/ic_notifications_black_24dp" />
+
+        <ImageButton
+            android:id="@+id/menu_car_manager"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_blue_dark"
+            android:src="@drawable/ic_car_manager_blue_24dp" />
+
+    </LinearLayout>
+
 
     <ImageView
         android:id="@+id/picture_car_iv"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:layout_below="@id/car_selected_menu_layout"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/empty_view_car"
-        android:src="@drawable/ic_directions_car_black_24dp"
-        android:contentDescription="@string/car_image" />
+        android:contentDescription="@string/car_image"
+        android:src="@drawable/ic_directions_car_black_24dp" />
 
     <LinearLayout
         android:id="@+id/loading_mask_message"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#B0000000 "
-        android:visibility="gone"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        android:visibility="gone" />
 
 </RelativeLayout>
