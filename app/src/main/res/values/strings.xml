@@ -36,4 +36,11 @@
     <string name="loading_message">Chargement…</string>
     <string name="add_notification">Création</string>
     <string name="view_notification">Consultation</string>
+    <string name="add_notification_title_text">Créer une notification</string>
+    <string name="notification_pick_date_text">Choisir une date</string>
+    <string name="notification_enter_comment_text">Vous pouvez entrer un commentaire ici</string>
+    <string name="notification_alarm_name_text">Nom de l\'alarme</string>
+    <string name="validate">Valider</string>
+    <string name="date">Date :</string>
+    <string name="notification_date_chosen_text">Date : %3$s-%3$s-%3$s</string>
 </resources>

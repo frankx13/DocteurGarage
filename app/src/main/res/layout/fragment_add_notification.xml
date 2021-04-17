@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddNotificationFragment">
+
+    <TextView
+        android:id="@+id/add_notification_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/add_notification_title_text"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="normal" />
+
+
+    <DatePicker
+        android:id="@+id/add_notification_date_dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"
+        android:datePickerMode="calendar" />
+
+
+    <EditText
+        android:id="@+id/add_notification_name_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="5dp"
+        android:hint="@string/notification_alarm_name_text"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/add_notification_note_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:hint="@string/notification_enter_comment_text"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/add_notification_time_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:text="@string/notification_pick_date_text"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/add_notification_date_chosen_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone"
+        android:text="@string/notification_pick_date_text"
+        android:textAlignment="center"/>
+
+
+
+    <Button
+        android:id="@+id/add_notification_validate_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorItemFocus"
+        android:text="@string/validate"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="25sp" />
+
+</LinearLayout>
