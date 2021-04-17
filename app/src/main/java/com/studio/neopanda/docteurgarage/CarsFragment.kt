@@ -1,6 +1,7 @@
 package com.studio.neopanda.docteurgarage
 
 
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.ActivityNotFoundException
 import android.content.Context.MODE_PRIVATE
@@ -8,6 +9,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,7 +45,7 @@ class CarsFragment : Fragment() {
 
     private var progressDialog: ProgressDialog? = null
 
-    private lateinit var timestamp: Calendar
+    private lateinit var timestampCreation: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -413,6 +415,8 @@ class CarsFragment : Fragment() {
     }
 
     private fun createCar() {
+        generateTimestamp()
+
         if (!carOneIsCreated && !carTwoIsCreated && !carThreeIsCreated) {
             val car = activity!!.getSharedPreferences("car_one", MODE_PRIVATE)
             val edt = car.edit()
@@ -423,8 +427,7 @@ class CarsFragment : Fragment() {
             edt.putInt("car_kilometers", carKilometers)
             edt.putString("car_last_tc", carLastTechnicalControl)
             edt.putString("car_last_emptying", carLastEmptying)
-            timestamp =  Calendar.getInstance()
-            edt.putString("timestamp", timestamp.toString())
+            edt.putString("car_date_creation", timestampCreation)
             edt.apply()
 
             Toast.makeText(this.activity, "Voiture créée !", Toast.LENGTH_LONG).show()
@@ -438,6 +441,7 @@ class CarsFragment : Fragment() {
             edt.putInt("car_kilometers", carKilometers)
             edt.putString("car_last_tc", carLastTechnicalControl)
             edt.putString("car_last_emptying", carLastEmptying)
+            edt.putString("car_date_creation", timestampCreation)
             edt.apply()
 
             Toast.makeText(this.activity, "Voiture créée !", Toast.LENGTH_LONG).show()
@@ -451,11 +455,35 @@ class CarsFragment : Fragment() {
             edt.putInt("car_kilometers", carKilometers)
             edt.putString("car_last_tc", carLastTechnicalControl)
             edt.putString("car_last_emptying", carLastEmptying)
+            edt.putString("car_date_creation", timestampCreation)
             edt.apply()
 
+            Tools().hideKeyboard(this.activity!!)
             Toast.makeText(this.activity, "Voiture créée !", Toast.LENGTH_LONG).show()
         }
 
+    }
+
+    private fun generateTimestamp() {
+        val year: Int = Calendar.getInstance().get(Calendar.YEAR)
+
+        val monthRaw: Int = Calendar.getInstance().get(Calendar.MONTH)
+        val monthClean: String = Tools().getCleanMonth(monthRaw)
+
+        val dayRaw: Int = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        val dayClean: String = Tools().getCleanDay(dayRaw)
+
+        val hourRaw: Int = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+        val hourClean: String = Tools().getCleanHour(hourRaw)
+
+        val minuteRaw: Int = Calendar.getInstance().get(Calendar.MINUTE)
+        val minuteClean: String = Tools().getCleanMinute(minuteRaw)
+
+        val secondRaw: Int = Calendar.getInstance().get(Calendar.SECOND)
+        val secondClean: String = Tools().getCleanSecond(secondRaw)
+
+        timestampCreation = "$year-$monthClean-$dayClean $hourClean:$minuteClean:$secondClean"
+        Log.e("Timestamp value", timestampCreation)
     }
 
     private fun dispatchTakePictureIntent() {
