@@ -64,4 +64,55 @@ class Tools {
             "0$monthCleanedStringed"
         }
     }
+
+    // We compare two dates and return the difference of time between them expressed in seconds
+    // Each year having a different number of days, we need to update this method every year
+    fun compareDatesInSeconds(dateStart:String, dateEnd:String) : Int{
+        var differenceInSeconds = 0
+        var counter = 0
+
+        val dateStartDays = dateStart.substring(0, 1).toInt()
+        val dateStartMonths = dateStart.substring(2, 3).toInt()
+        val dateStartYears = dateStart.substring(4, 7).toInt()
+        val dateEndDays = dateEnd.substring(0, 1).toInt()
+        val dateEndMonths = dateEnd.substring(2, 3).toInt()
+        val dateEndYears = dateEnd.substring(4, 7).toInt()
+
+        val daysDifference = dateEndDays - dateStartDays
+        var monthsDifference = dateEndMonths - dateStartMonths
+        val yearsDifference = dateEndYears - dateStartYears
+
+        if (yearsDifference > 0){
+            while (counter < yearsDifference){
+                monthsDifference += 12
+                counter += 1
+            }
+        }
+
+        // Case where the start date is after the end date or is the same date
+        if ((yearsDifference < 0 || monthsDifference < 0 || daysDifference < 0)
+            || yearsDifference == 0 && monthsDifference == 0 && daysDifference == 0) {
+            differenceInSeconds = 0
+        }
+
+        return differenceInSeconds
+    }
+    // Tests fields for compareDatesInSeconds()
+//    Fin	10 12 2020
+//    Debut	11 12 2020
+//    Resultat	-1 0 0
+//
+//    Fin	10 10 2020
+//    Debut	11 12 2020
+//    Resultat	-1 -2 0
+//
+//    Fin	10 12 2020
+//    Debut	11 12 2021
+//    Resultat	-1 0 -1
+//
+//    Fin	29 12 2021
+//    Debut	01 01 2001
+//    Resultat	28 11 20
+
+//    2021 = 365 jours
 }
