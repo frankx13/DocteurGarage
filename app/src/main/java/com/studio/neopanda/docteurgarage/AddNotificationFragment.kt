@@ -2,17 +2,21 @@ package com.studio.neopanda.docteurgarage
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_add_notification.*
+import java.util.*
 
 
 class AddNotificationFragment : Fragment() {
-//    val NOTIFICATION_CHANNEL_ID = "10001"
+    //    val NOTIFICATION_CHANNEL_ID = "10001"
 //    private val default_notification_channel_id = "default"
+    var seconds: Int = 0
+
 
     var yearNotification: Int = 0
     var monthNotification: Int = 0
@@ -21,6 +25,7 @@ class AddNotificationFragment : Fragment() {
     var notificationName: String = ""
     var notificationNote: String = ""
     var notificationDate: String = ""
+    var currentDate: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,13 +52,16 @@ class AddNotificationFragment : Fragment() {
         }
 
         getDateInformation()
+        getCurrentDate()
 
         add_notification_validate_btn.setOnClickListener {
             notificationName = add_notification_name_et.editableText.toString()
             notificationNote = add_notification_note_et.editableText.toString()
 
             if (notificationName != "" && notificationNote != "" && notificationDate != "") {
-//                createNotification(notificationName, notificationNote, notificationDate)
+                seconds = Tools().compareDatesInSeconds(currentDate, notificationDate)
+                Log.e("Seconds", seconds.toString())
+//              createNotification(notificationName, notificationNote, notificationDate, secondsDelay)
             } else {
                 Toast.makeText(
                     this.activity,
@@ -62,6 +70,19 @@ class AddNotificationFragment : Fragment() {
                 ).show()
             }
         }
+    }
+
+    private fun getCurrentDate() {
+        val year: Int = Calendar.getInstance().get(Calendar.YEAR)
+
+        val monthRaw: Int = Calendar.getInstance().get(Calendar.MONTH)
+        val monthClean: String = Tools().getCleanMonth(monthRaw)
+
+        val dayRaw: Int = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        val dayClean: String = Tools().getCleanDay(dayRaw)
+
+        currentDate = "$dayClean$monthClean$year"
+        Log.e("Current date value", currentDate)
     }
 
 
@@ -85,8 +106,8 @@ class AddNotificationFragment : Fragment() {
     private fun getDateInformation() {
         add_notification_date_dp.setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
             yearNotification = year
-            monthNotification = monthOfYear
-            dayNotification = dayOfMonth
+            monthNotification = Tools().getCleanMonth(monthOfYear).toInt()
+            dayNotification = Tools().getCleanDay(dayOfMonth).toInt()
 
             add_notification_date_dp.visibility = View.GONE
             add_notification_name_et.visibility = View.VISIBLE
@@ -94,9 +115,9 @@ class AddNotificationFragment : Fragment() {
             add_notification_validate_btn.visibility = View.VISIBLE
 
             add_notification_date_chosen_tv.text =
-                "$yearNotification/$monthNotification/$dayNotification"
+                "$dayNotification/$monthNotification/$yearNotification"
             add_notification_date_chosen_tv.visibility = View.VISIBLE
-            notificationDate = "$yearNotification-$monthNotification-$dayNotification"
+            notificationDate = "$dayNotification$monthNotification$yearNotification"
         }
     }
 

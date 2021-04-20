@@ -68,8 +68,8 @@ class Tools {
     // We compare two dates and return the difference of time between them expressed in seconds
     // Each year having a different number of days, we need to update this method every year
     fun compareDatesInSeconds(dateStart:String, dateEnd:String) : Int{
-        var differenceInSeconds = 0
-        var counter = 0
+        var differenceInSeconds: Int
+        var counter: Int
 
         val dateStartDays = dateStart.substring(0, 1).toInt()
         val dateStartMonths = dateStart.substring(2, 3).toInt()
@@ -78,14 +78,27 @@ class Tools {
         val dateEndMonths = dateEnd.substring(2, 3).toInt()
         val dateEndYears = dateEnd.substring(4, 7).toInt()
 
-        val daysDifference = dateEndDays - dateStartDays
+        var daysDifference = dateEndDays - dateStartDays
         var monthsDifference = dateEndMonths - dateStartMonths
-        val yearsDifference = dateEndYears - dateStartYears
+        var yearsDifference = dateEndYears - dateStartYears
 
         if (yearsDifference > 0){
+            counter = 0
             while (counter < yearsDifference){
+                yearsDifference -= 1
                 monthsDifference += 12
                 counter += 1
+            }
+        }
+
+        if (monthsDifference % 2 != 0 && monthsDifference > 0){
+            counter = 0
+            while (counter < monthsDifference) {
+                monthsDifference -= 1
+                daysDifference += 31
+                counter += 1
+
+                //TODO : take in charge bissextil years
             }
         }
 
@@ -93,6 +106,8 @@ class Tools {
         if ((yearsDifference < 0 || monthsDifference < 0 || daysDifference < 0)
             || yearsDifference == 0 && monthsDifference == 0 && daysDifference == 0) {
             differenceInSeconds = 0
+        } else {
+            differenceInSeconds = daysDifference * 86400
         }
 
         return differenceInSeconds
