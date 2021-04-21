@@ -67,8 +67,11 @@ class Tools {
 
     // We compare two dates and return the difference of time between them expressed in seconds
     // Each year having a different number of days, we need to update this method every year
+
+    // This method actually works well for two dates of the same year
+    // TODO Test on several years differences, and limit it to a certain number
     fun compareDatesInSeconds(dateStart:String, dateEnd:String) : Int{
-        var differenceInSeconds: Int
+        val differenceInSeconds: Int
         var counter: Int
 
         val dateStartDays = dateStart.substring(0, 2).toInt()
