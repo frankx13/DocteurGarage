@@ -71,11 +71,11 @@ class Tools {
         var differenceInSeconds: Int
         var counter: Int
 
-        val dateStartDays = dateStart.substring(0, 1).toInt()
-        val dateStartMonths = dateStart.substring(2, 3).toInt()
+        val dateStartDays = dateStart.substring(0, 2).toInt()
+        val dateStartMonths = dateStart.substring(2, 4).toInt()
         val dateStartYears = dateStart.substring(4, 7).toInt()
-        val dateEndDays = dateEnd.substring(0, 1).toInt()
-        val dateEndMonths = dateEnd.substring(2, 3).toInt()
+        val dateEndDays = dateEnd.substring(0, 2).toInt()
+        val dateEndMonths = dateEnd.substring(2, 4).toInt()
         val dateEndYears = dateEnd.substring(4, 7).toInt()
 
         var daysDifference = dateEndDays - dateStartDays

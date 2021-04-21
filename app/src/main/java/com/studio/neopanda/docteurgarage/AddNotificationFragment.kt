@@ -17,15 +17,14 @@ class AddNotificationFragment : Fragment() {
 //    private val default_notification_channel_id = "default"
     var seconds: Int = 0
 
+    private var yearNotification: Int = 0
+    private var monthNotification: String = ""
+    private var dayNotification: String = ""
 
-    var yearNotification: Int = 0
-    var monthNotification: Int = 0
-    var dayNotification: Int = 0
-
-    var notificationName: String = ""
-    var notificationNote: String = ""
-    var notificationDate: String = ""
-    var currentDate: String = ""
+    private var notificationName: String = ""
+    private var notificationNote: String = ""
+    private var notificationDate: String = ""
+    private var currentDate: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -106,8 +105,8 @@ class AddNotificationFragment : Fragment() {
     private fun getDateInformation() {
         add_notification_date_dp.setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
             yearNotification = year
-            monthNotification = Tools().getCleanMonth(monthOfYear).toInt()
-            dayNotification = Tools().getCleanDay(dayOfMonth).toInt()
+            monthNotification = Tools().getCleanMonth(monthOfYear)
+            dayNotification = Tools().getCleanDay(dayOfMonth)
 
             add_notification_date_dp.visibility = View.GONE
             add_notification_name_et.visibility = View.VISIBLE
